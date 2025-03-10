@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://behfnd3c1efmp"]
+[gd_scene load_steps=3 format=3 uid="uid://behfnd3c1efmp"]
 
 [ext_resource type="FontFile" uid="uid://b7tqj24gjmqen" path="res://fonts/Pixeled.ttf" id="1_3r8r0"]
+[ext_resource type="Script" path="res://hud.gd" id="1_4xghp"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_4xghp")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -55,3 +57,8 @@ theme_override_font_sizes/font_size = 30
 text = "START"
 
 [node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
